@@ -1,6 +1,6 @@
 process INVERSE_COLOUR { 
 
-    publishDir "rotated_images"
+    publishDir "results_directory"
 
     input:
     path(rotated)

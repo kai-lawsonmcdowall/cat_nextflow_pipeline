@@ -1,8 +1,6 @@
-params.outdir = "/home/kai/nextflow_image_pipeline/rotated_images"
-
 process INVERSE_COLOUR { 
 
-    publishDir "${params.outdir}"
+    publishDir "rotated_images"
 
     input:
     path(rotated)

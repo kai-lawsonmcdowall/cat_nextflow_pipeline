@@ -7,7 +7,7 @@ include { ROTATE                    } from './modules/rotate.nf'
 include { INVERSE_COLOUR            } from './modules/inverse.nf'
 
 
-params.cat_image = '/home/kai/nextflow_image_pipeline/images/*.jpg'
+params.cat_image = "${baseDir}/images/*.jpg"
 
 workflow {
     def rotate_channel = Channel.fromPath(params.cat_image)

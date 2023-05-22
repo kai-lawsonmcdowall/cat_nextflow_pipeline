@@ -8,7 +8,7 @@ process ROTATE {
     path(cat_image)
 
     output: 
-    path('rotated_cat.jpg'), emit: rotated // Define the 'rotated_cat.jpg' file path
+    path("${cat_image.baseName}.jpg"), emit: rotated // Define the 'rotated_cat.jpg' file path
 
     script:
     """
@@ -22,7 +22,7 @@ process ROTATE {
     rotated_image = Original_Image.rotate(180)
 
     # Define the output file path
-    output_path = "${'rotated_cat.jpg'}"
+    output_path = "${cat_image.baseName}.jpg"
     
     saved_rotated_image = rotated_image.save(output_path)
     """

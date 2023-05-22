@@ -6,7 +6,7 @@ process INVERSE_COLOUR {
     path(rotated)
 
     output: 
-    path('inverse_cat.jpg')
+    path("${rotated.baseName}_final.jpg")
 
     script: 
     """
@@ -19,7 +19,7 @@ process INVERSE_COLOUR {
     inverted_image = PIL.ImageOps.invert(image)
 
     # Define the output file path
-    output_path = "${'inverse_cat.jpg'}"
+    output_path = "${rotated.baseName}_final.jpg"
 
     inverted_image.save(output_path)
     """

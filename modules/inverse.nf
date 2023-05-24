@@ -3,10 +3,10 @@ process INVERSE_COLOUR {
     publishDir "results_directory"
 
     input:
-    path(rotated)
+    tuple val(id), path(image_path)
 
     output: 
-    path("${rotated.baseName}_final.jpg")
+    tuple val(id), path("${id}_final.jpg"), emit: inverse
 
     script: 
     """
@@ -15,12 +15,10 @@ process INVERSE_COLOUR {
     from PIL import Image
     import PIL.ImageOps    
 
-    image = Image.open('${rotated}')
+    image = Image.open('${image_path}')
     inverted_image = PIL.ImageOps.invert(image)
 
     # Define the output file path
-    output_path = "${rotated.baseName}_final.jpg"
-
-    inverted_image.save(output_path)
+    inverted_image.save("${id}_final.jpg")
     """
 }
